@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'auth_mfa',
     'auth_passwordless',
     'auth_api_routing',
+    'docs',
 ]
 
 MIDDLEWARE = [

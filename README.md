@@ -30,6 +30,29 @@ A comprehensive Django-based authentication service that implements 16 different
 - **Configurable routing rules** - Map source paths to target endpoints
 - **Authentication forwarding** - Pass user context to downstream services
 
+### Documentation
+
+- **Interactive Documentation App** - Built-in web-based documentation
+- **JSON API Documentation** - Programmatic access to docs
+- **Setup Guides** - Complete installation and configuration
+- **API Reference** - All endpoints with examples
+- **Changelog** - Track API changes and versions
+
+## Documentation
+
+The service includes a comprehensive documentation app accessible at:
+
+- **Web Interface**: http://localhost:8000/api/docs/web/
+- **JSON API**: http://localhost:8000/api/docs/
+
+### Documentation Sections
+
+- **Setup Guide**: `/api/docs/setup/` or `/api/docs/web/setup/`
+- **API Reference**: `/api/docs/api/` or `/api/docs/web/api/`
+- **Changelog**: `/api/docs/changelog/` or `/api/docs/web/changelog/`
+- **Architecture**: `/api/docs/architecture/`
+- **Deployment**: `/api/docs/deployment/`
+
 ## Installation
 
 ### Prerequisites

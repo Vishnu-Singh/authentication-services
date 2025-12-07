@@ -35,5 +35,8 @@ urlpatterns = [
     
     # API routing endpoint
     path('api/route/', include('auth_api_routing.urls')),
+    
+    # Documentation endpoints
+    path('api/docs/', include('docs.urls')),
 ]
 

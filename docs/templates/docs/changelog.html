@@ -1,0 +1,108 @@
+{% extends "docs/base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Changelog</h2>
+    <p>Track all changes and updates to the Authentication Service.</p>
+</div>
+
+<div class="card">
+    <h2>Version 1.0.0 <span class="badge">Current</span></h2>
+    <p><strong>Release Date:</strong> December 7, 2025</p>
+    
+    <h3>✨ Added</h3>
+    <ul>
+        <li>Session-based authentication with cookies</li>
+        <li>JWT token authentication with refresh</li>
+        <li>OAuth 2.0 authorization server</li>
+        <li>OpenID Connect (OIDC) provider</li>
+        <li>SAML Identity Provider</li>
+        <li>Social login framework</li>
+        <li>LDAP/Active Directory support</li>
+        <li>Multi-factor authentication (TOTP)</li>
+        <li>Backup codes for MFA</li>
+        <li>WebAuthn/FIDO2 credentials</li>
+        <li>Passwordless magic links</li>
+        <li>One-time password (OTP)</li>
+        <li>API key management</li>
+        <li>HMAC signed requests</li>
+        <li>HTTP Basic authentication</li>
+        <li>Request routing for REST</li>
+        <li>SOAP protocol support</li>
+        <li>Authentication audit logging</li>
+        <li>Django admin interfaces</li>
+        <li>Documentation app with web UI</li>
+        <li>Comprehensive API documentation</li>
+        <li>Setup and deployment guides</li>
+    </ul>
+    
+    <h3>🔒 Security</h3>
+    <ul>
+        <li>CORS configuration</li>
+        <li>CSRF protection</li>
+        <li>Secure session cookies</li>
+        <li>JWT token blacklisting support</li>
+        <li>API key expiration</li>
+        <li>IP address tracking</li>
+        <li>User agent logging</li>
+    </ul>
+    
+    <h3>🏗️ Infrastructure</h3>
+    <ul>
+        <li>PostgreSQL/MySQL support</li>
+        <li>Redis session storage support</li>
+        <li>Docker deployment configuration</li>
+        <li>Production deployment guide</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Upcoming in Version 1.1.0</h2>
+    <p><strong>Planned Features:</strong></p>
+    <ul>
+        <li>Rate limiting middleware</li>
+        <li>Email/SMS provider integration</li>
+        <li>Full LDAP/AD implementation</li>
+        <li>Advanced SAML features</li>
+        <li>GraphQL API support</li>
+        <li>Webhook notifications</li>
+        <li>Analytics dashboard</li>
+        <li>Swagger/ReDoc API documentation UI</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Migration Guide</h2>
+    
+    <h3>From 0.x to 1.0</h3>
+    <p>This is the initial release. To get started:</p>
+    <ol>
+        <li>Follow the <a href="/api/docs/web/setup/">Setup Guide</a></li>
+        <li>Run migrations: <code>python manage.py migrate</code></li>
+        <li>Create superuser: <code>python manage.py createsuperuser</code></li>
+        <li>Start server: <code>python manage.py runserver</code></li>
+    </ol>
+</div>
+
+<div class="card">
+    <h2>API Versioning</h2>
+    <p><strong>Strategy:</strong> URL path versioning (future)</p>
+    <p><strong>Current:</strong> Single version (v1 implicit in all endpoints)</p>
+    <p><strong>Future:</strong> Version 2+ will use <code>/api/v2/</code> prefix</p>
+</div>
+
+<div class="card">
+    <h2>Breaking Changes</h2>
+    <p>None - This is the initial release.</p>
+</div>
+
+<div class="card">
+    <h2>Deprecated Features</h2>
+    <p>None - This is the initial release.</p>
+</div>
+
+<div class="card">
+    <h2>Bug Fixes</h2>
+    <p>None - This is the initial release.</p>
+</div>
+{% endblock %}
