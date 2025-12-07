@@ -59,8 +59,9 @@ The service includes a comprehensive documentation app accessible at:
 
 - Python 3.8+
 - pip
+- Nox (optional, for environment management)
 
-### Setup
+### Quick Setup (Manual)
 
 1. Clone the repository:
 ```bash
@@ -89,6 +90,48 @@ python manage.py runserver
 ```
 
 The service will be available at `http://localhost:8000`
+
+### Setup with Nox (Recommended)
+
+This project includes Nox configuration for managing different environments (dev, UAT, production).
+
+**Quick Start with Script:**
+
+```bash
+git clone https://github.com/Vishnu-Singh/authentication-services.git
+cd authentication-services
+./quickstart.sh dev
+```
+
+**Manual Nox Setup:**
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Vishnu-Singh/authentication-services.git
+cd authentication-services
+```
+
+2. Install Nox:
+```bash
+pip install nox
+```
+
+3. Set up development environment:
+```bash
+# Copy environment configuration
+cp .env.dev .env
+
+# Install dependencies and run migrations
+nox -s dev-install
+
+# Create a superuser
+nox -s dev-createsuperuser
+
+# Start the development server
+nox -s dev-server
+```
+
+For detailed Nox usage and environment-specific configurations, see [NOX_GUIDE.md](NOX_GUIDE.md).
 
 ## API Endpoints
 

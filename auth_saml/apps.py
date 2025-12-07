@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AuthSamlConfig(AppConfig):
-    name = 'auth_saml'
+    name = "auth_saml"

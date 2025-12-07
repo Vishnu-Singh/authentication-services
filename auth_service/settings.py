@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g_b@oynr-c)y9-xz9_5_r522*&ryrefxyn4+q%f#y^1ve-ud7t'
+SECRET_KEY = "django-insecure-g_b@oynr-c)y9-xz9_5_r522*&ryrefxyn4+q%f#y^1ve-ud7t"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,66 +31,66 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
     # Third-party apps
-    'rest_framework',
-    'rest_framework_simplejwt',
-    'corsheaders',
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "corsheaders",
     # Our authentication apps
-    'auth_core',
-    'auth_session',
-    'auth_token',
-    'auth_oauth',
-    'auth_saml',
-    'auth_mfa',
-    'auth_passwordless',
-    'auth_api_routing',
-    'docs',
+    "auth_core",
+    "auth_session",
+    "auth_token",
+    "auth_oauth",
+    "auth_saml",
+    "auth_mfa",
+    "auth_passwordless",
+    "auth_api_routing",
+    "docs",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'auth_service.urls'
+ROOT_URLCONF = "auth_service.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'auth_service.wsgi.application'
+WSGI_APPLICATION = "auth_service.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -100,16 +100,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -117,9 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -129,10 +129,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
 # Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS Settings
 CORS_ALLOW_ALL_ORIGINS = True  # For development - restrict in production
@@ -140,17 +140,17 @@ CORS_ALLOW_CREDENTIALS = True
 
 # REST Framework Settings
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
     ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ],
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
     ],
 }
 
@@ -158,68 +158,68 @@ REST_FRAMEWORK = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
-    'AUTH_HEADER_TYPES': ('Bearer',),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": SECRET_KEY,
+    "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
 # Session Configuration
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
 SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_AGE = 86400  # 24 hours
 
 # Authentication Backends
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
+    "django.contrib.auth.backends.ModelBackend",
 ]
 
 # OAuth2 Settings (placeholder - configure per provider)
 OAUTH2_PROVIDERS = {
-    'google': {
-        'client_id': '',
-        'client_secret': '',
-        'redirect_uri': '',
+    "google": {
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri": "",
     },
-    'github': {
-        'client_id': '',
-        'client_secret': '',
-        'redirect_uri': '',
+    "github": {
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri": "",
     },
 }
 
 # SAML Settings (placeholder)
 SAML_CONFIG = {
-    'entityId': '',
-    'assertionConsumerService': {
-        'url': '',
-        'binding': '',
+    "entityId": "",
+    "assertionConsumerService": {
+        "url": "",
+        "binding": "",
     },
-    'singleLogoutService': {
-        'url': '',
-        'binding': '',
+    "singleLogoutService": {
+        "url": "",
+        "binding": "",
     },
 }
 
 # LDAP Settings (placeholder)
 LDAP_CONFIG = {
-    'server_uri': '',
-    'bind_dn': '',
-    'bind_password': '',
-    'user_search_base': '',
+    "server_uri": "",
+    "bind_dn": "",
+    "bind_password": "",
+    "user_search_base": "",
 }
 
 # MFA Settings
 MFA_ENABLED = True
-MFA_ISSUER_NAME = 'Auth Service'
+MFA_ISSUER_NAME = "Auth Service"
 
 # API Key Settings
-API_KEY_HEADER = 'X-API-Key'
+API_KEY_HEADER = "X-API-Key"
 
 # Request Routing Settings
 ROUTING_ENABLED = True
@@ -228,7 +228,6 @@ ROUTING_TARGETS = {
 }
 
 # WebAuthn Settings
-WEBAUTHN_RP_ID = 'localhost'
-WEBAUTHN_RP_NAME = 'Auth Service'
-WEBAUTHN_ORIGIN = 'http://localhost:8000'
-
+WEBAUTHN_RP_ID = "localhost"
+WEBAUTHN_RP_NAME = "Auth Service"
+WEBAUTHN_ORIGIN = "http://localhost:8000"

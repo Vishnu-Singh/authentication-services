@@ -2,10 +2,12 @@
 """
 Test script to verify authentication service endpoints
 """
-import requests
 import json
 
+import requests
+
 BASE_URL = "http://localhost:8000"
+
 
 def test_session_registration():
     """Test user registration"""
@@ -14,9 +16,9 @@ def test_session_registration():
     data = {
         "username": "testuser",
         "email": "test@example.com",
-        "password": "testpass123"
+        "password": "testpass123",
     }
-    
+
     try:
         response = requests.post(url, json=data)
         print(f"Status: {response.status_code}")
@@ -31,18 +33,15 @@ def test_jwt_token():
     """Test JWT token generation"""
     print("\n=== Testing JWT Token Generation ===")
     url = f"{BASE_URL}/api/token/"
-    data = {
-        "username": "testuser",
-        "password": "testpass123"
-    }
-    
+    data = {"username": "testuser", "password": "testpass123"}
+
     try:
         response = requests.post(url, json=data)
         print(f"Status: {response.status_code}")
         if response.status_code == 200:
             tokens = response.json()
             print(f"Access Token: {tokens.get('access', '')[:50]}...")
-            return tokens.get('access')
+            return tokens.get("access")
         else:
             print(f"Response: {response.text}")
             return None
@@ -54,12 +53,12 @@ def test_jwt_token():
 def test_api_endpoints():
     """Test various API endpoints"""
     print("\n=== Testing API Endpoints ===")
-    
+
     endpoints = [
         ("GET", "/api/auth/oauth/.well-known/openid-configuration/"),
         ("GET", "/api/auth/saml/metadata/"),
     ]
-    
+
     for method, endpoint in endpoints:
         url = f"{BASE_URL}{endpoint}"
         print(f"\n{method} {endpoint}")
@@ -68,7 +67,7 @@ def test_api_endpoints():
                 response = requests.get(url)
             else:
                 response = requests.post(url)
-            
+
             print(f"Status: {response.status_code}")
             if response.status_code == 200:
                 print("✓ Endpoint accessible")
@@ -83,16 +82,16 @@ def main():
     print("Authentication Service Test Suite")
     print("=" * 60)
     print("\nNote: Make sure the Django server is running on localhost:8000")
-    
+
     # Test registration
     test_session_registration()
-    
+
     # Test JWT tokens
     access_token = test_jwt_token()
-    
+
     # Test public endpoints
     test_api_endpoints()
-    
+
     print("\n" + "=" * 60)
     print("Test suite completed!")
     print("=" * 60)
