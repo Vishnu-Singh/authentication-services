@@ -35,7 +35,9 @@ ENVIRONMENTS = {
 def dev_install(session):
     """Install dependencies for development environment."""
     session.install("-r", "requirements.txt")
-    session.install("pytest", "pytest-django", "factory-boy", "black", "flake8", "isort")
+    session.install(
+        "pytest", "pytest-django", "factory-boy", "black", "flake8", "isort"
+    )
     session.notify("dev-migrate")
 
 
@@ -120,7 +122,14 @@ def uat_server(session):
     session.install("-r", "requirements.txt")
     session.install("gunicorn")
     session.env["DJANGO_SETTINGS_MODULE"] = ENVIRONMENTS["uat"]
-    session.run("gunicorn", "auth_service.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3")
+    session.run(
+        "gunicorn",
+        "auth_service.wsgi:application",
+        "--bind",
+        "0.0.0.0:8000",
+        "--workers",
+        "3",
+    )
 
 
 @nox.session(python=PYTHON_VERSION, name="prod-server")
@@ -129,7 +138,14 @@ def prod_server(session):
     session.install("-r", "requirements.txt")
     session.install("gunicorn", "psycopg2-binary")
     session.env["DJANGO_SETTINGS_MODULE"] = ENVIRONMENTS["prod"]
-    session.run("gunicorn", "auth_service.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4")
+    session.run(
+        "gunicorn",
+        "auth_service.wsgi:application",
+        "--bind",
+        "0.0.0.0:8000",
+        "--workers",
+        "4",
+    )
 
 
 @nox.session(python=PYTHON_VERSION, name="dev-shell")
@@ -144,7 +160,16 @@ def dev_shell(session):
 def lint(session):
     """Run linting checks with flake8."""
     session.install("flake8", "flake8-docstrings")
-    session.run("flake8", ".", "--exclude", ".nox,venv,migrations,__pycache__", "--max-line-length", "120", "--ignore", "D100,D101,D102,D103,D104,D105,D106,D107")
+    session.run(
+        "flake8",
+        ".",
+        "--exclude",
+        ".nox,venv,migrations,__pycache__",
+        "--max-line-length",
+        "120",
+        "--ignore",
+        "D100,D101,D102,D103,D104,D105,D106,D107",
+    )
 
 
 @nox.session(python=PYTHON_VERSION, name="format")
@@ -152,15 +177,40 @@ def format_code(session):
     """Format code with black and isort."""
     session.install("black", "isort")
     session.run("black", ".", "--exclude", r"/(\.nox|venv|migrations|__pycache__)/")
-    session.run("isort", ".", "--skip", ".nox", "--skip", "venv", "--skip", "migrations", "--skip", "__pycache__")
+    session.run(
+        "isort",
+        ".",
+        "--skip",
+        ".nox",
+        "--skip",
+        "venv",
+        "--skip",
+        "migrations",
+        "--skip",
+        "__pycache__",
+    )
 
 
 @nox.session(python=PYTHON_VERSION, name="format-check")
 def format_check(session):
     """Check code formatting without making changes."""
     session.install("black", "isort")
-    session.run("black", ".", "--check", "--exclude", r"/(\.nox|venv|migrations|__pycache__)/")
-    session.run("isort", ".", "--check-only", "--skip", ".nox", "--skip", "venv", "--skip", "migrations", "--skip", "__pycache__")
+    session.run(
+        "black", ".", "--check", "--exclude", r"/(\.nox|venv|migrations|__pycache__)/"
+    )
+    session.run(
+        "isort",
+        ".",
+        "--check-only",
+        "--skip",
+        ".nox",
+        "--skip",
+        "venv",
+        "--skip",
+        "migrations",
+        "--skip",
+        "__pycache__",
+    )
 
 
 @nox.session(python=PYTHON_VERSION, name="dev-createsuperuser")
@@ -198,14 +248,21 @@ def prod_collectstatic(session):
 @nox.session(python=PYTHON_VERSION, name="clean")
 def clean(session):
     """Clean up generated files and caches."""
-    import shutil
     import os
-    
-    dirs_to_remove = [".nox", "__pycache__", ".pytest_cache", "staticfiles", "*.egg-info"]
+    import shutil
+
+    dirs_to_remove = [
+        ".nox",
+        "__pycache__",
+        ".pytest_cache",
+        "staticfiles",
+        "*.egg-info",
+    ]
     for dir_pattern in dirs_to_remove:
         if "*" in dir_pattern:
             # Handle glob patterns
             import glob
+
             for path in glob.glob(f"**/{dir_pattern}", recursive=True):
                 if os.path.exists(path):
                     session.log(f"Removing {path}")

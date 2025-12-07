@@ -95,6 +95,16 @@ The service will be available at `http://localhost:8000`
 
 This project includes Nox configuration for managing different environments (dev, UAT, production).
 
+**Quick Start with Script:**
+
+```bash
+git clone https://github.com/Vishnu-Singh/authentication-services.git
+cd authentication-services
+./quickstart.sh dev
+```
+
+**Manual Nox Setup:**
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/Vishnu-Singh/authentication-services.git
