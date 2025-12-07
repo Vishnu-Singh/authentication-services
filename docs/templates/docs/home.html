@@ -1,0 +1,110 @@
+{% extends "docs/base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Welcome to Authentication Service Documentation</h2>
+    <p>A comprehensive Django-based authentication service implementing 16 different authentication methods with request routing capabilities for REST and SOAP protocols.</p>
+</div>
+
+<div class="grid">
+    <div class="feature-card">
+        <h3>🚀 Quick Start</h3>
+        <p>Get started with the authentication service in minutes.</p>
+        <a href="/api/docs/web/setup/" class="btn">Setup Guide</a>
+    </div>
+    
+    <div class="feature-card">
+        <h3>📚 API Reference</h3>
+        <p>Explore all available endpoints and their usage.</p>
+        <a href="/api/docs/web/api/" class="btn">View APIs</a>
+    </div>
+    
+    <div class="feature-card">
+        <h3>📝 Changelog</h3>
+        <p>Track changes and updates to the service.</p>
+        <a href="/api/docs/web/changelog/" class="btn">View Changes</a>
+    </div>
+    
+    <div class="feature-card">
+        <h3>🔧 JSON API</h3>
+        <p>Access documentation in JSON format.</p>
+        <a href="/api/docs/" class="btn">JSON Docs</a>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Features</h2>
+    
+    <h3>Authentication Methods (16 Total)</h3>
+    <div class="grid">
+        <div>
+            <h4>Modern Authentication</h4>
+            <ul>
+                <li>Session-based (cookies)</li>
+                <li>JWT tokens</li>
+                <li>API keys</li>
+                <li>OAuth 2.0</li>
+                <li>OpenID Connect</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4>Enterprise/Federated</h4>
+            <ul>
+                <li>SAML (IdP/SP)</li>
+                <li>Social login</li>
+                <li>LDAP/Active Directory</li>
+                <li>Kerberos/NTLM</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4>Advanced Security</h4>
+            <ul>
+                <li>Multi-factor (TOTP)</li>
+                <li>Passwordless (magic links)</li>
+                <li>WebAuthn/FIDO2</li>
+                <li>mTLS certificates</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h4>Legacy/Specialized</h4>
+            <ul>
+                <li>HTTP Basic/Digest</li>
+                <li>HMAC signed requests</li>
+                <li>Static tokens</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Request Routing</h2>
+    <p>Forward authenticated requests to target services with user context.</p>
+    
+    <div class="grid">
+        <div class="feature-card">
+            <h3>REST Protocol</h3>
+            <p>Support for GET, POST, PUT, DELETE, PATCH with authentication forwarding.</p>
+        </div>
+        
+        <div class="feature-card">
+            <h3>SOAP Protocol</h3>
+            <p>Parse SOAP envelopes and route to target services.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Quick Links</h2>
+    <ul>
+        <li><a href="/admin/">Django Admin Interface</a></li>
+        <li><a href="/api/docs/setup/">Installation & Setup</a></li>
+        <li><a href="/api/docs/api/">Complete API Documentation</a></li>
+        <li><a href="/api/docs/architecture/">Architecture Overview</a></li>
+        <li><a href="/api/docs/deployment/">Deployment Guide</a></li>
+        <li><a href="/api/docs/changelog/">Changelog & Version History</a></li>
+    </ul>
+</div>
+{% endblock %}

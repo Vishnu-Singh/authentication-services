@@ -1,0 +1,218 @@
+{% extends "docs/base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>API Reference</h2>
+    <p>Complete reference for all authentication service endpoints.</p>
+    <p><strong>Base URL:</strong> <code>http://localhost:8000</code></p>
+</div>
+
+<div class="card">
+    <h2>Authentication Methods</h2>
+    <p>The API supports multiple authentication methods:</p>
+    <ul>
+        <li><span class="badge">Session Cookie</span> - Server-side sessions</li>
+        <li><span class="badge">JWT Token</span> - Authorization: Bearer &lt;token&gt;</li>
+        <li><span class="badge">API Key</span> - X-API-Key: &lt;key&gt;</li>
+        <li><span class="badge">HTTP Basic</span> - Authorization: Basic &lt;credentials&gt;</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Session Authentication</h2>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/session/register/</code>
+        <p><strong>Register new user</strong></p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "username": "string (required)",
+  "email": "string (required)",
+  "password": "string (required)"
+}</code></pre>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/session/login/</code>
+        <p><strong>Login with credentials</strong></p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "username": "string (required)",
+  "password": "string (required)"
+}</code></pre>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/session/logout/</code>
+        <p><strong>Logout and destroy session</strong></p>
+        <p>Auth Required: Yes</p>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method">GET</span>
+        <code>/api/auth/session/status/</code>
+        <p><strong>Check authentication status</strong></p>
+        <p>Auth Required: Yes</p>
+    </div>
+</div>
+
+<div class="card">
+    <h2>JWT Token Authentication</h2>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/token/</code>
+        <p><strong>Obtain JWT access and refresh tokens</strong></p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "username": "string (required)",
+  "password": "string (required)"
+}</code></pre>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/token/refresh/</code>
+        <p><strong>Refresh JWT access token</strong></p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "refresh": "string (required)"
+}</code></pre>
+    </div>
+</div>
+
+<div class="card">
+    <h2>API Key Management</h2>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/token/api-key/create/</code>
+        <p><strong>Create new API key</strong></p>
+        <p>Auth Required: Yes</p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "name": "string (required)",
+  "expires_at": "datetime (optional)"
+}</code></pre>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method">GET</span>
+        <code>/api/auth/token/api-key/list/</code>
+        <p><strong>List all API keys for authenticated user</strong></p>
+        <p>Auth Required: Yes</p>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method">GET</span>
+        <code>/api/auth/token/api-key/verify/</code>
+        <p><strong>Verify API key validity</strong></p>
+        <p>Header: <code>X-API-Key: &lt;key&gt;</code></p>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method delete">DELETE</span>
+        <code>/api/auth/token/api-key/&lt;id&gt;/revoke/</code>
+        <p><strong>Revoke/delete API key</strong></p>
+        <p>Auth Required: Yes</p>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Multi-Factor Authentication</h2>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/mfa/totp/setup/</code>
+        <p><strong>Setup TOTP 2FA with QR code</strong></p>
+        <p>Auth Required: Yes</p>
+        <p>Returns QR code for Google Authenticator/Authy</p>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/mfa/totp/verify/</code>
+        <p><strong>Verify TOTP code and enable 2FA</strong></p>
+        <p>Auth Required: Yes</p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "code": "string (6 digits)"
+}</code></pre>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Passwordless Authentication</h2>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/passwordless/magic-link/request/</code>
+        <p><strong>Request magic link for passwordless login</strong></p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "email": "string (required)"
+}</code></pre>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/auth/passwordless/otp/request/</code>
+        <p><strong>Request one-time password</strong></p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "email": "string (required)",
+  "method": "email or sms"
+}</code></pre>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Request Routing</h2>
+    
+    <div class="api-endpoint">
+        <span class="badge">GET/POST/PUT/DELETE/PATCH</span>
+        <code>/api/route/forward/?target=&lt;path&gt;</code>
+        <p><strong>Forward authenticated request to target service</strong></p>
+        <p>Auth Required: Yes</p>
+        <p>Query Param: <code>target</code> - routing path</p>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/route/soap/</code>
+        <p><strong>SOAP endpoint for routing</strong></p>
+        <p>Content-Type: text/xml</p>
+    </div>
+    
+    <div class="api-endpoint">
+        <span class="method post">POST</span>
+        <code>/api/route/create/</code>
+        <p><strong>Create new routing rule (admin only)</strong></p>
+        <p>Auth Required: Yes (Admin)</p>
+        <p>Request Body:</p>
+        <pre><code>{
+  "name": "string (required)",
+  "source_path": "string (required)",
+  "target_url": "string (required)",
+  "auth_method": "session|jwt|oauth|saml|api_key",
+  "priority": "int (default: 100)"
+}</code></pre>
+    </div>
+</div>
+
+<div class="card">
+    <h2>JSON Documentation</h2>
+    <p>For programmatic access to documentation, use the JSON endpoints:</p>
+    <ul>
+        <li><a href="/api/docs/">/api/docs/</a> - Documentation home</li>
+        <li><a href="/api/docs/setup/">/api/docs/setup/</a> - Setup guide</li>
+        <li><a href="/api/docs/api/">/api/docs/api/</a> - Complete API reference</li>
+        <li><a href="/api/docs/changelog/">/api/docs/changelog/</a> - Changelog</li>
+        <li><a href="/api/docs/architecture/">/api/docs/architecture/</a> - Architecture</li>
+        <li><a href="/api/docs/deployment/">/api/docs/deployment/</a> - Deployment guide</li>
+    </ul>
+</div>
+{% endblock %}

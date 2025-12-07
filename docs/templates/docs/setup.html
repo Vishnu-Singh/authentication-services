@@ -1,0 +1,107 @@
+{% extends "docs/base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Setup Guide</h2>
+    <p>Follow these steps to set up the Authentication Service on your system.</p>
+</div>
+
+<div class="card">
+    <h2>Prerequisites</h2>
+    <ul>
+        <li><strong>Python:</strong> 3.8 or higher</li>
+        <li><strong>pip:</strong> Latest version</li>
+        <li><strong>Database:</strong> SQLite (development) or PostgreSQL/MySQL (production)</li>
+        <li><strong>Optional:</strong> Redis for session storage, Docker for containerization</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Installation Steps</h2>
+    
+    <h3>Step 1: Clone Repository</h3>
+    <pre><code>git clone https://github.com/Vishnu-Singh/authentication-services.git
+cd authentication-services</code></pre>
+    
+    <h3>Step 2: Install Dependencies</h3>
+    <pre><code>pip install -r requirements.txt</code></pre>
+    
+    <h3>Step 3: Run Database Migrations</h3>
+    <pre><code>python manage.py migrate</code></pre>
+    
+    <h3>Step 4: Create Superuser</h3>
+    <pre><code>python manage.py createsuperuser</code></pre>
+    <p>Follow the prompts to create an admin account.</p>
+    
+    <h3>Step 5: Start Development Server</h3>
+    <pre><code>python manage.py runserver</code></pre>
+    <p>The service will be available at <code>http://localhost:8000</code></p>
+</div>
+
+<div class="card">
+    <h2>Configuration</h2>
+    <p>Copy <code>.env.example</code> to <code>.env</code> and configure:</p>
+    
+    <h3>Key Settings</h3>
+    <ul>
+        <li><code>DEBUG</code> - Set to False in production</li>
+        <li><code>SECRET_KEY</code> - Use a strong random key</li>
+        <li><code>ALLOWED_HOSTS</code> - Configure allowed domains</li>
+        <li><code>DATABASE_*</code> - Database connection settings</li>
+        <li><code>CORS_ALLOWED_ORIGINS</code> - Configure CORS for frontend</li>
+        <li><code>EMAIL_*</code> - Email configuration for OTP/magic links</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Project Structure</h2>
+    <ul>
+        <li><strong>auth_service:</strong> Main Django project configuration</li>
+        <li><strong>auth_core:</strong> Core models (APIKey, OAuthClient, RoutingRule, etc.)</li>
+        <li><strong>auth_session:</strong> Session-based authentication</li>
+        <li><strong>auth_token:</strong> Token/API key authentication</li>
+        <li><strong>auth_oauth:</strong> OAuth 2.0 and OIDC</li>
+        <li><strong>auth_saml:</strong> SAML authentication</li>
+        <li><strong>auth_mfa:</strong> Multi-factor authentication</li>
+        <li><strong>auth_passwordless:</strong> Passwordless authentication</li>
+        <li><strong>auth_api_routing:</strong> Request routing (REST/SOAP)</li>
+        <li><strong>docs:</strong> Documentation app</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Quick Test</h2>
+    <p>Verify your installation:</p>
+    
+    <ol>
+        <li>Start server: <code>python manage.py runserver</code></li>
+        <li>Visit admin: <a href="http://localhost:8000/admin/">http://localhost:8000/admin/</a></li>
+        <li>Check docs: <a href="/api/docs/">http://localhost:8000/api/docs/</a></li>
+        <li>Test endpoint:</li>
+    </ol>
+    
+    <pre><code>curl http://localhost:8000/api/auth/session/status/</code></pre>
+</div>
+
+<div class="card">
+    <h2>Troubleshooting</h2>
+    
+    <h3>Module not found errors</h3>
+    <p><strong>Solution:</strong> Run <code>pip install -r requirements.txt</code></p>
+    
+    <h3>Database errors</h3>
+    <p><strong>Solution:</strong> Run <code>python manage.py migrate</code></p>
+    
+    <h3>Port already in use</h3>
+    <p><strong>Solution:</strong> Use different port <code>python manage.py runserver 8001</code></p>
+</div>
+
+<div class="card">
+    <h2>Next Steps</h2>
+    <ul>
+        <li><a href="/api/docs/web/api/">Explore the API Reference</a></li>
+        <li><a href="/api/docs/architecture/">Learn about the architecture</a></li>
+        <li><a href="/api/docs/deployment/">Deploy to production</a></li>
+    </ul>
+</div>
+{% endblock %}
