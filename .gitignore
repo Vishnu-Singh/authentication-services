@@ -25,9 +25,19 @@ wheels/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+db_dev.sqlite3
+db_uat.sqlite3
+db_prod.sqlite3
 media/
+media_dev/
+media_uat/
+media_prod/
 staticfiles/
+staticfiles_dev/
+staticfiles_uat/
+staticfiles_prod/
 *.pot
+logs/
 
 # Virtual Environment
 venv/
@@ -55,6 +65,7 @@ Thumbs.db
 htmlcov/
 .pytest_cache/
 .tox/
+.nox/
 
 # Backup files
 *.bak
